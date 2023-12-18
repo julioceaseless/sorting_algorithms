@@ -7,23 +7,24 @@
  * @size: size of array
  *
  */
+
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
 	int temp;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < array[i])
+			if (array[i] > array[j])
 			{
 				/* swap */
 				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
+				swap_flag = 1;
 			}
 		}
-		print_array(array, size);
 	}
 }
