@@ -10,21 +10,33 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i, j, minIndex;
 	int temp;
 
-	for (i = 0; i < size - 1; i++)
+	if (array && size > 1)
 	{
-		for (j = i + 1; j < size; j++)
+		for (i = 0; i < size - 1; i++)
 		{
-			if (array[i] > array[j])
+			minIndex = i;
+
+			for (j = i + 1; j < size; j++)
+			{
+				if (array[j] < array[minIndex])
+				{
+					minIndex = j;
+				}
+			}
+
+			if (i != minIndex)
 			{
 				/* swap */
 				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
+				array[i] = array[minIndex];
+				array[minIndex] = temp;
+
+				/* print after every swap */
+				print_array(array, size);
 			}
 		}
-		print_array(array, size);
 	}
 }
